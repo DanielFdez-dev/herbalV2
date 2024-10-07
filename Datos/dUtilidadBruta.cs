@@ -82,5 +82,40 @@ namespace Datos
             }
             return lista;
         }
+
+        public List<listaDetalleUtilidad> utilidadPorFecha(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            List<listaDetalleUtilidad> lista = new List<listaDetalleUtilidad>();
+            using (var con = GetConnection())
+            {
+                con.Open();
+                using (var cmd = new SqlCommand())
+                {
+                    cmd.Connection = con;
+                    cmd.CommandText = "selecT folio,cast(fechaVenta as date)as fechaVenta,subtotal, descuento, precioDescuento,total,porcentajeComisionVendedor,costoComisionVendedor, costoFlete, utilidadBruta from ventas where cast(fechaVenta as date) between @fechaInicial and @fechaFinal ORDER BY fechaVenta;";
+                    cmd.Parameters.AddWithValue("@fechaInicial", fechaInicial.Date);
+                    cmd.Parameters.AddWithValue("@fechaFinal", fechaFinal.Date);
+                    cmd.CommandType = CommandType.Text;
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        lista.Add(new listaDetalleUtilidad
+                        {
+                            folio = Convert.ToInt32(reader["folio"]),
+                            fechaVenta = Convert.ToDateTime(reader["fechaVenta"]),
+                            subtotal = Convert.ToDecimal(reader["subtotal"]),
+                            descuento = Convert.ToInt32(reader["descuento"]),
+                            precioDescuento = Convert.ToDecimal(reader["precioDescuento"]),
+                            totalVenta = Convert.ToDecimal(reader["total"]),
+                            porcentajeComision = Convert.ToInt32(reader["porcentajeComisionVendedor"]),
+                            precioComision = Convert.ToDecimal(reader["costoComisionVendedor"]),
+                            precioFlete = Convert.ToDecimal(reader["costoFlete"]),
+                            totalUtilidad = Convert.ToDecimal(reader["utilidadBruta"])
+                        });
+                    }
+                }
+            }
+            return lista;
+        }
     }
 }

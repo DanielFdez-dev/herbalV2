@@ -188,6 +188,12 @@
     <Compile Include="UtilidadBruta\utilidadBruta.Designer.cs">
       <DependentUpon>utilidadBruta.cs</DependentUpon>
     </Compile>
+    <Compile Include="UtilidadBruta\utilidadBrutaGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UtilidadBruta\utilidadBrutaGeneral.Designer.cs">
+      <DependentUpon>utilidadBrutaGeneral.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vendedores\seleccionarVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +295,7 @@
     </Compile>
     <EmbeddedResource Include="RDLC\notaVenta.rdlc" />
     <EmbeddedResource Include="RDLC\utilidad.rdlc" />
+    <EmbeddedResource Include="RDLC\utilidadGeneral.rdlc" />
     <EmbeddedResource Include="Reportes\reporteCuentasCobrar.resx">
       <DependentUpon>reporteCuentasCobrar.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UtilidadBruta\utilidadBruta.resx">
       <DependentUpon>utilidadBruta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UtilidadBruta\utilidadBrutaGeneral.resx">
+      <DependentUpon>utilidadBrutaGeneral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vendedores\seleccionarVendedor.resx">
       <DependentUpon>seleccionarVendedor.cs</DependentUpon>
@@ -336,6 +346,7 @@
     <None Include="Properties\DataSources\Datos.Listas.listaDetalleUtilidad.datasource" />
     <None Include="Properties\DataSources\Datos.Listas.listaVentaDetalleNota.datasource" />
     <None Include="Properties\DataSources\Datos.Listas.listaVentaGeneralNota.datasource" />
+    <None Include="Properties\DataSources\herbalV2.UtilidadBruta.utilidadBrutaGeneral.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -373,6 +384,7 @@
     <Content Include="Recursos\salario %281%29.png" />
     <Content Include="Recursos\salario %282%29.png" />
     <Content Include="Recursos\submenu.png" />
+    <Content Include="Recursos\utilidadFecha.png" />
     <Content Include="Recursos\Vendedores %281%29.png" />
     <Content Include="Recursos\ventas %281%29.png" />
     <Content Include="Recursos\vitalael logo.jpg" />

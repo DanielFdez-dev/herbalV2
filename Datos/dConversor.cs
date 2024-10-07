@@ -9,6 +9,7 @@ namespace Datos
     {
         public static string NumeroALetras(this decimal numberAsString)
         {
+
             string dec;
 
             var entero = Convert.ToInt64(Math.Truncate(numberAsString));
@@ -25,11 +26,21 @@ namespace Datos
                 dec = $" PESOS {decimales:0,0} /100";
             }
             var res = NumeroALetras(Convert.ToDouble(entero)) + dec;
+            if (numberAsString < 0)
+            {
+                res = "MENOS " + res;
+            }
             return res;
+
+
         }
         [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator")]
         private static string NumeroALetras(double value)
         {
+            if(value< 0)
+            {
+                value = value * (-1);
+            }
             string num2Text; value = Math.Truncate(value);
             if (value == 0) num2Text = "CERO";
             else if (value == 1) num2Text = "UNO";
@@ -102,6 +113,8 @@ namespace Datos
                 }
             }
             return num2Text;
+
+
         }
     }
 }

@@ -121,7 +121,7 @@ namespace herbalV2.Principal
             this.Show();
             txtEmpleado.Focus();
             txtPass.Text = string.Empty;
-
+            
         }
 
         private void login_MouseDown(object sender, MouseEventArgs e)

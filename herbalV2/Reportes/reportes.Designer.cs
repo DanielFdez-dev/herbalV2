@@ -33,6 +33,7 @@
             this.btnReporteCobranza = new System.Windows.Forms.Button();
             this.btnReimpresionNotaVenta = new System.Windows.Forms.Button();
             this.btnUtilidadBruta = new System.Windows.Forms.Button();
+            this.btnUtilidadXFecha = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnReporteVentas
@@ -99,12 +100,29 @@
             this.btnUtilidadBruta.UseVisualStyleBackColor = true;
             this.btnUtilidadBruta.Click += new System.EventHandler(this.btnUtilidadBruta_Click);
             // 
+            // btnUtilidadXFecha
+            // 
+            this.btnUtilidadXFecha.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnUtilidadXFecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUtilidadXFecha.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUtilidadXFecha.Image = ((System.Drawing.Image)(resources.GetObject("btnUtilidadXFecha.Image")));
+            this.btnUtilidadXFecha.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUtilidadXFecha.Location = new System.Drawing.Point(923, 114);
+            this.btnUtilidadXFecha.Name = "btnUtilidadXFecha";
+            this.btnUtilidadXFecha.Size = new System.Drawing.Size(173, 165);
+            this.btnUtilidadXFecha.TabIndex = 4;
+            this.btnUtilidadXFecha.Text = "Utilidad X Fecha";
+            this.btnUtilidadXFecha.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUtilidadXFecha.UseVisualStyleBackColor = true;
+            this.btnUtilidadXFecha.Click += new System.EventHandler(this.btnUtilidadXFecha_Click);
+            // 
             // reportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1178, 682);
+            this.Controls.Add(this.btnUtilidadXFecha);
             this.Controls.Add(this.btnUtilidadBruta);
             this.Controls.Add(this.btnReimpresionNotaVenta);
             this.Controls.Add(this.btnReporteCobranza);
@@ -121,5 +139,6 @@
         private System.Windows.Forms.Button btnReporteCobranza;
         private System.Windows.Forms.Button btnReimpresionNotaVenta;
         private System.Windows.Forms.Button btnUtilidadBruta;
+        private System.Windows.Forms.Button btnUtilidadXFecha;
     }
 }

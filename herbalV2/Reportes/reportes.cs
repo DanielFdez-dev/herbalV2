@@ -65,5 +65,18 @@ namespace herbalV2.Reportes
             }
 
         }
+
+        private void btnUtilidadXFecha_Click(object sender, EventArgs e)
+        {
+            if (dComun.idEmpleado == 1)
+            {
+                var frm = new UtilidadBruta.utilidadBrutaGeneral();
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Solo el administrador puede ingresar a este reporte");
+            }
+        }
     }
 }
