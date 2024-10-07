@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LOGO HERBAL SOLUTIONS %28R%29.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1652.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -368,6 +371,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="LOGO HERBAL SOLUTIONS %28R%29.ico" />
     <Content Include="Recursos\beneficio-financiero %281%29.png" />
     <Content Include="Recursos\boton-x-oscuro.png" />
     <Content Include="Recursos\clientes %281%29.png" />
