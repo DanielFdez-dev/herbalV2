@@ -52,6 +52,7 @@ namespace herbalV2.Productos
                         MessageBox.Show("Lote ingresado correctamente");
                         listarLotes();
                         limpiarControles();
+                        txtLote.Focus();
                     }
                 }
             }
@@ -103,6 +104,10 @@ namespace herbalV2.Productos
         private void entradaProductos_Load(object sender, EventArgs e)
         {
             listarLotes();
+            dtCaducidad.Format = DateTimePickerFormat.Custom;
+            dtCaducidad.CustomFormat = "MMMM yyyy"; // Mostrar mes y año
+            dtCaducidad.ShowUpDown = true; // Para mostrar el control como un selector de mes/año
+
         }
 
         private void linkSeleccionarProducto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

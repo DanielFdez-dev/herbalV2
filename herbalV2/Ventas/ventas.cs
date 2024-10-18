@@ -59,7 +59,7 @@ namespace herbalV2.Ventas
             {
                 var obj = new dTipoPrecio();
                 cbTipoPrecio.DataSource = obj.listarTipoPrecio();
-                cbTipoPrecio.DisplayMember = "descripcionCompleta";
+                cbTipoPrecio.DisplayMember = "descripcion";
                 cbTipoPrecio.ValueMember = "idTipoPrecio";
             }
             catch (Exception e)
@@ -210,10 +210,11 @@ namespace herbalV2.Ventas
         {
             timer1.Enabled = true;
             listarTipoPrecio();
-            calcularFechaPago(Convert.ToInt32(string.IsNullOrEmpty(txtPlazoPago.Text) ? "0" : txtPlazoPago.Text));
+            calcularFechaPago(0);
             tablaVenta.Columns.Add("idLote");
             tablaVenta.Columns.Add("Codigo");
             tablaVenta.Columns.Add("Lote");
+            tablaVenta.Columns.Add("Caducidad");
             tablaVenta.Columns.Add("Producto");
             tablaVenta.Columns.Add("Cantidad");
             tablaVenta.Columns.Add("Precio");
@@ -314,16 +315,15 @@ namespace herbalV2.Ventas
         private decimal obtenerPrecioDescuento(decimal precioMayoreo)
         {
             string input = cbTipoPrecio.Text;
-            string pattern = @"-(\d+)%";
             decimal descuento = 0, precio = 0;
             try
             {
-                Match match = Regex.Match(input, pattern);
-                if (match.Success)
-                {
-                    string numero = match.Groups[1].Value;
-                    descuento = Convert.ToDecimal(numero) / 100;
-                }
+                if (input == "PM") { descuento = 0; }
+                else if (input == "D1") { descuento = 0.10m; }
+                else if (input == "D2") { descuento = 0.20m; }
+                else if (input == "D3") { descuento = 0.30m; }
+                
+
                 precio = precioMayoreo - (precioMayoreo * descuento);
             }
             catch (Exception e)
@@ -346,6 +346,7 @@ namespace herbalV2.Ventas
             tablaTemp.Columns.Add("lote");
             tablaTemp.Columns.Add("cantidad");
             tablaTemp.Columns.Add("precioMayoreo");
+            tablaTemp.Columns.Add("caducidad");
 
 
             try
@@ -360,6 +361,7 @@ namespace herbalV2.Ventas
                         row["lote"] = tablaLotes.Rows[i]["lote"];
                         row["cantidad"] = cantidad;
                         row["precioMayoreo"] = tablaLotes.Rows[i]["precioMayoreo"];
+                        row["caducidad"] = tablaLotes.Rows[i]["caducidad"];
                         tablaTemp.Rows.Add(row);
                         break;
                     }
@@ -372,6 +374,7 @@ namespace herbalV2.Ventas
                         row["lote"] = tablaLotes.Rows[i]["lote"];
                         row["cantidad"] = stockTemp;
                         row["precioMayoreo"] = tablaLotes.Rows[i]["precioMayoreo"];
+                        row["caducidad"] = tablaLotes.Rows[i]["caducidad"];
                         tablaTemp.Rows.Add(row);
                     }
                 }
@@ -389,6 +392,7 @@ namespace herbalV2.Ventas
                     DataRow row = tablaVenta.NewRow();
                     row["idLote"] = tablaTemp.Rows[i]["idLote"];
                     row["Lote"] = tablaTemp.Rows[i]["lote"];
+                    row["Caducidad"] = tablaTemp.Rows[i]["caducidad"];
                     row["Codigo"] = txtCodigo.Text;
                     row["Producto"] = txtProducto.Text;
                     row["Cantidad"] = tablaTemp.Rows[i]["cantidad"];
@@ -423,6 +427,7 @@ namespace herbalV2.Ventas
             tablaTemp.Columns.Add("lote");
             tablaTemp.Columns.Add("cantidad");
             tablaTemp.Columns.Add("precioMayoreo");
+            tablaTemp.Columns.Add("caducidad");
 
 
             try
@@ -437,6 +442,7 @@ namespace herbalV2.Ventas
                         row["lote"] = tablaLotes.Rows[i]["lote"];
                         row["cantidad"] = cantidad;
                         row["precioMayoreo"] = precioUnitario;
+                        row["caducidad"] = tablaLotes.Rows[i]["caducidad"];
                         tablaTemp.Rows.Add(row);
                         break;
                     }
@@ -449,6 +455,7 @@ namespace herbalV2.Ventas
                         row["lote"] = tablaLotes.Rows[i]["lote"];
                         row["cantidad"] = stockTemp;
                         row["precioMayoreo"] = precioUnitario;
+                        row["caducidad"] = tablaLotes.Rows[i]["caducidad"];
                         tablaTemp.Rows.Add(row);
                     }
                 }
@@ -465,6 +472,7 @@ namespace herbalV2.Ventas
                     DataRow row = tablaVenta.NewRow();
                     row["idLote"] = tablaTemp.Rows[i]["idLote"];
                     row["Lote"] = tablaTemp.Rows[i]["lote"];
+                    row["Caducidad"] = tablaTemp.Rows[i]["caducidad"];
                     row["Codigo"] = codigoProducto;
                     row["Producto"] = descripcion;
                     row["Cantidad"] = tablaTemp.Rows[i]["cantidad"];
@@ -712,6 +720,7 @@ namespace herbalV2.Ventas
                     DataRow row = tablaVenta.NewRow();
                     row["idLote"] = tab.Rows[i]["idLote"];
                     row["Lote"] = tab.Rows[i]["lote"];
+                    row["Caducidad"] = tab.Rows[i]["caducidad"];
                     row["Codigo"] = tab.Rows[i]["codigo"];
                     row["Producto"] = tab.Rows[i]["producto"];
                     row["Cantidad"] = tab.Rows[i]["cantidad"];

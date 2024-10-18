@@ -136,6 +136,7 @@
             this.Controls.Add(this.dgvProductos);
             this.Name = "seleccionarProductoVenta";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "-";
             this.Load += new System.EventHandler(this.seleccionarProductoVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();

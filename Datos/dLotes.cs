@@ -37,7 +37,7 @@ namespace Datos
                 {
                     command.Connection = connection;
                     command.CommandText = "agregarLotes";
-                    command.Parameters.AddWithValue("lote", lote);
+                    command.Parameters.AddWithValue("lote", lote.ToUpper());
                     command.Parameters.AddWithValue("caducidad", caducidad);
                     command.Parameters.AddWithValue("stock", stock);
                     command.Parameters.AddWithValue("idProducto", idProducto);

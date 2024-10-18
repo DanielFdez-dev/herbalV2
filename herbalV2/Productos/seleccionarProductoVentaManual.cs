@@ -19,69 +19,68 @@ namespace herbalV2.Productos
         {
             InitializeComponent();
         }
-        private void listarProductos()
+        //private void listarProductos()
+        //{
+        //    try
+        //    {
+        //        var obj = new dProductos();
+        //        dgvProductos.DataSource = obj.listarProductos();
+        //        dgvProductos.Columns["idProducto"].Visible = false;
+        //        dgvProductos.Columns["amecop"].Visible = false;
+        //        dgvProductos.Columns["precioCosto"].Visible = false;
+        //        dgvProductos.Columns["precioLab"].Visible = false;
+        //        dgvProductos.Columns["precioDistribuidor"].Visible = false;
+        //        dgvProductos.Columns["precioLista"].Visible = false;
+        //        dgvProductos.Columns["precioMayoreo"].Visible = false;
+        //        dgvProductos.Columns["iva"].Visible = false;
+        //        dgvProductos.Columns["clasificacion"].Visible = false;
+        //        dgvProductos.Columns["idClasificacion"].Visible = false;
+        //        dgvProductos.Columns["idMarca"].Visible = false;
+        //        dgvProductos.Columns["marca"].Visible = false;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show("Error mostrarTodos(): " + e.Message);
+        //    }
+        //}
+
+        private void buscarProducto(string texto)
         {
             try
             {
                 var obj = new dProductos();
-                dgvProductos.DataSource = obj.listarProductos();
+                var productos = obj.seleccionarProducto(texto);
+                dgvProductos.SuspendLayout();
+                dgvProductos.DataSource = productos;
+                dgvProductos.ResumeLayout();
                 dgvProductos.Columns["idProducto"].Visible = false;
-                dgvProductos.Columns["amecop"].Visible = false;
-                dgvProductos.Columns["precioCosto"].Visible = false;
-                dgvProductos.Columns["precioLab"].Visible = false;
-                dgvProductos.Columns["precioDistribuidor"].Visible = false;
-                dgvProductos.Columns["precioLista"].Visible = false;
-                dgvProductos.Columns["precioMayoreo"].Visible = false;
-                dgvProductos.Columns["iva"].Visible = false;
-                dgvProductos.Columns["clasificacion"].Visible = false;
-                dgvProductos.Columns["idClasificacion"].Visible = false;
-                dgvProductos.Columns["idMarca"].Visible = false;
-                dgvProductos.Columns["marca"].Visible = false;
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error mostrarTodos(): " + e.Message);
-            }
-        }
-        private void buscarProducto()
-        {
-            if (txtBuscar.Text == "")
-            {
-                listarProductos();
-            }
-            else
-            {
-                dgvProductos.CurrentCell = null;
-                foreach (DataGridViewRow row in dgvProductos.Rows)
-                {
-                    row.Visible = false;
-                }
-                foreach (DataGridViewRow row in dgvProductos.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        if ((cell.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
-                        {
-                            row.Visible = true;
-                            break;
-                        }
-                    }
-                }
+                MessageBox.Show("Error listarProductos(): " + e.Message);
             }
         }
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            buscarProducto();
+            if (txtBuscar.TextLength >= 3)
+            {
+                buscarProducto(txtBuscar.Text);
+            }
+            else
+            {
+                dgvProductos.DataSource = null;
+            }
         }
 
         private void seleccionarProductoVentaManual_Load(object sender, EventArgs e)
         {
-            listarProductos();
+            //listarProductos();
             txtBuscar.Focus();
 
             tablaSeleccionado.Columns.Add("codigo");
             tablaSeleccionado.Columns.Add("producto");
+            tablaSeleccionado.Columns.Add("caducidad");
             tablaSeleccionado.Columns.Add("idLote");
             tablaSeleccionado.Columns.Add("lote");
             tablaSeleccionado.Columns.Add("cantidad");
@@ -120,16 +119,18 @@ namespace herbalV2.Productos
                 if (Convert.ToInt32(dgvLotes.CurrentRow.Cells[5].Value) >= cantidad.Value)
                 {
                     DataRow row = tablaSeleccionado.NewRow();
-                    row["codigo"] = dgvProductos.CurrentRow.Cells[2].Value;
-                    row["producto"] = dgvProductos.CurrentRow.Cells[3].Value;
+                    row["codigo"] = dgvProductos.CurrentRow.Cells[1].Value;
+                    row["producto"] = dgvProductos.CurrentRow.Cells[2].Value;
+                    row["caducidad"] = dgvLotes.CurrentRow.Cells[4].Value;
                     row["idLote"] = dgvLotes.CurrentRow.Cells[0].Value;
                     row["lote"] = dgvLotes.CurrentRow.Cells[2].Value;
                     row["cantidad"] = cantidad.Value;
-                    row["precioMayoreo"] = dgvProductos.CurrentRow.Cells[8].Value;
+                    row["precioMayoreo"] = dgvProductos.CurrentRow.Cells[3].Value;
 
                     tablaSeleccionado.Rows.Add(row);
 
                     dgvSeleccionado.DataSource = tablaSeleccionado;
+                    dgvSeleccionado.Columns["idLote"].Visible = false;
                 }
                 else
                 {

@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cacheManager.cs" />
     <Compile Include="conexion.cs" />
     <Compile Include="dClasificaciones.cs" />
     <Compile Include="dClientes.cs" />
@@ -62,6 +63,8 @@
     <Compile Include="dVentas.cs" />
     <Compile Include="Listas\listaCliente.cs" />
     <Compile Include="Listas\listaDetalleUtilidad.cs" />
+    <Compile Include="Listas\listaProducto.cs" />
+    <Compile Include="Listas\listaSeleccionarProducto.cs" />
     <Compile Include="Listas\listaVentaDetalle.cs" />
     <Compile Include="Listas\listaVentaDetalleNota.cs" />
     <Compile Include="Listas\listaVentaGeneralNota.cs" />

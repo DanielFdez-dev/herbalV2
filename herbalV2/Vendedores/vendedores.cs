@@ -167,11 +167,19 @@ namespace herbalV2.Vendedores
             {
                 if (label2.Text == "Agregar")
                 {
-                    agregarVendedor();
+                    if (cbEstado.Focused || txtComision.Focused || txtNombre.Focused)
+                    {
+                        btnGuardar.Focus();
+                        agregarVendedor();
+                    }
                 }
                 else
                 {
-                    modificarVendedor();
+                    if (cbEstado.Focused || txtComision.Focused || txtNombre.Focused)
+                    {
+                        btnGuardar.Focus();
+                        modificarVendedor();
+                    }
                 }
                 return true;
             }

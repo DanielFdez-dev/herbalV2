@@ -136,6 +136,7 @@
             this.Controls.Add(this.dgvProductos);
             this.Name = "seleccionarOtroProducto";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.seleccionarOtroProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.ResumeLayout(false);

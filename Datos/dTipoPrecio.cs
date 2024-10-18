@@ -18,7 +18,7 @@ namespace Datos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "select *,concat(descripcion,'-',descuento,'%')as descripcionCompleta from tipoPrecio";
+                    command.CommandText = "select *,descripcion from tipoPrecio";
                     command.CommandType = CommandType.Text;
                     SqlDataReader reader = command.ExecuteReader();
                     DataTable tabla = new DataTable();

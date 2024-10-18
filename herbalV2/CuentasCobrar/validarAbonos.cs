@@ -133,8 +133,7 @@ namespace herbalV2.CuentasCobrar
 
                 if (fileBytes != null)
                 {
-                    string fileName = dgvValidaciones.CurrentRow.Cells[3].Value.ToString() + "-" + dgvValidaciones.CurrentRow.Cells[1].Value.ToString() + "-" + 
-                        dgvValidaciones.CurrentRow.Cells[9].Value.ToString() + dgvValidaciones.CurrentRow.Cells[10].Value.ToString();
+                    string fileName = dgvValidaciones.CurrentRow.Cells[3].Value.ToString() + "-" + dgvValidaciones.CurrentRow.Cells[1].Value.ToString() + "-" + dgvValidaciones.CurrentRow.Cells[10].Value.ToString();
                     string filePath = SaveFileToDownloads(fileBytes, fileName);
                     MessageBox.Show($"Archivo guardado en Descargas");
                 }

@@ -18,7 +18,7 @@ namespace Datos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "select* from clasificaciones where activo=1";
+                    command.CommandText = "select idClasificacion, descripcion from clasificaciones where activo=1";
                     command.CommandType = CommandType.Text;
                     SqlDataReader reader = command.ExecuteReader();
                     DataTable tabla = new DataTable();

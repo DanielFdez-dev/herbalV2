@@ -128,9 +128,9 @@ namespace herbalV2.Principal
         {
             if (panelMenu.Width == 250)
             {
-                panelMenu.Width = 63;
+                panelMenu.Width = 58;
             }
-            else if (panelMenu.Width == 63)
+            else if (panelMenu.Width == 58)
             {
                 panelMenu.Width = 250;
             }

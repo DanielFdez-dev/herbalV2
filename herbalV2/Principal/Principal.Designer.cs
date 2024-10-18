@@ -72,7 +72,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(250, 900);
+            this.panelMenu.Size = new System.Drawing.Size(250, 834);
             this.panelMenu.TabIndex = 0;
             // 
             // btnVentasPendientes
@@ -84,6 +84,7 @@
             this.btnVentasPendientes.Image = ((System.Drawing.Image)(resources.GetObject("btnVentasPendientes.Image")));
             this.btnVentasPendientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVentasPendientes.Location = new System.Drawing.Point(11, 233);
+            this.btnVentasPendientes.Margin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             this.btnVentasPendientes.Name = "btnVentasPendientes";
             this.btnVentasPendientes.Size = new System.Drawing.Size(225, 44);
             this.btnVentasPendientes.TabIndex = 2;
@@ -97,7 +98,7 @@
             this.lbVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbVersion.AutoSize = true;
             this.lbVersion.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVersion.Location = new System.Drawing.Point(171, 874);
+            this.lbVersion.Location = new System.Drawing.Point(171, 808);
             this.lbVersion.Name = "lbVersion";
             this.lbVersion.Size = new System.Drawing.Size(40, 16);
             this.lbVersion.TabIndex = 9;
@@ -133,6 +134,7 @@
             // pbMenu
             // 
             this.pbMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbMenu.Image = ((System.Drawing.Image)(resources.GetObject("pbMenu.Image")));
             this.pbMenu.Location = new System.Drawing.Point(202, 6);
             this.pbMenu.Name = "pbMenu";
@@ -320,10 +322,11 @@
             this.panelContenedor.AutoSize = true;
             this.panelContenedor.BackColor = System.Drawing.Color.White;
             this.panelContenedor.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelContenedor.BackgroundImage")));
+            this.panelContenedor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(250, 44);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1297, 856);
+            this.panelContenedor.Size = new System.Drawing.Size(1297, 790);
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.SizeChanged += new System.EventHandler(this.panelContenedor_SizeChanged);
             // 
@@ -331,7 +334,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1547, 900);
+            this.ClientSize = new System.Drawing.Size(1547, 834);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panelMenu);

@@ -1,4 +1,5 @@
 ﻿using Datos;
+using Datos.Listas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,8 @@ namespace herbalV2.Productos
         public productos()
         {
             InitializeComponent();
+            dgvProductos.VirtualMode = true;
+            
         }
 
         private void limpiarControles()
@@ -36,27 +39,30 @@ namespace herbalV2.Productos
             txtPLista.Text = string.Empty;
             txtStock.Text = "0.0";
         }
-        private void listarProductos()
-        {
-            try
-            {
-                var obj = new dProductos();
-                dgvProductos.DataSource = obj.listarProductos();
-                dgvProductos.Columns["idProducto"].Visible = false;
-                dgvProductos.Columns["idClasificacion"].Visible = false;
-                dgvProductos.Columns["idMarca"].Visible = false;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error listarProductos(): " + e.Message);
-            }
-        }
-        private void listarClasificaciones()
+        //private  void listarProductos()
+        //{
+        //    try
+        //    {
+        //        var obj = new dProductos();
+        //        var productos = obj.listarProductos();
+        //        dgvProductos.SuspendLayout();
+        //        dgvProductos.DataSource = productos;
+        //        dgvProductos.ResumeLayout();
+        //        dgvProductos.Columns["idProducto"].Visible = false;
+        //        dgvProductos.Columns["idClasificacion"].Visible = false;
+        //        dgvProductos.Columns["idMarca"].Visible = false;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show("Error listarProductos(): " + e.Message);
+        //    }
+        //}
+        private async void listarClasificaciones()
         {
             try
             {
                 var obj = new dClasificaciones();
-                cbClasificacion.DataSource = obj.listarClasificaciones();
+                cbClasificacion.DataSource = await Task.Run(() => obj.listarClasificaciones());
                 cbClasificacion.DisplayMember = "descripcion";
                 cbClasificacion.ValueMember = "idClasificacion";
                 cbClasificacion.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -67,12 +73,12 @@ namespace herbalV2.Productos
                 MessageBox.Show("Error listarClasificaciones(): " + e.Message);
             }
         }
-        private void listarMarcas()
+        private async void listarMarcas()
         {
             try
             {
                 var obj = new dMarca();
-                cbMarca.DataSource = obj.listarMarcas();
+                cbMarca.DataSource = await Task.Run(() => obj.listarMarcas());
                 cbMarca.DisplayMember = "descripcion";
                 cbMarca.ValueMember = "idMarca";
                 cbMarca.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -101,7 +107,7 @@ namespace herbalV2.Productos
                             Convert.ToDecimal(txtPMayoreo.Text), Convert.ToDecimal(txtPLista.Text), Convert.ToInt32(chIva.Checked), Convert.ToInt32(cbClasificacion.SelectedValue), Convert.ToInt32(cbMarca.SelectedValue));
                         MessageBox.Show("Producto agregado correctamente");
                         limpiarControles();
-                        listarProductos();
+                        //listarProductos();
                     }
                 }
                 catch (Exception e)
@@ -132,7 +138,7 @@ namespace herbalV2.Productos
                         Convert.ToDecimal(txtPLista.Text), Convert.ToInt32(chIva.Checked), Convert.ToInt32(cbClasificacion.SelectedValue), Convert.ToInt32(cbMarca.SelectedValue));
                     MessageBox.Show("Producto modificado correctamente");
                     limpiarControles();
-                    listarProductos();
+                    //listarProductos();
                 }
             }
             catch (Exception e)
@@ -151,7 +157,7 @@ namespace herbalV2.Productos
                         var obj = new dProductos();
                         obj.eliminarProducto(Convert.ToInt32(dgvProductos.CurrentRow.Cells[0].Value));
                         MessageBox.Show("Producto eliminado correctamente");
-                        listarProductos();
+                        //listarProductos();
                         limpiarControles();
                     }
                 }
@@ -194,10 +200,10 @@ namespace herbalV2.Productos
             try
             {
                 var obj = new entradaProductos();
-                obj.idProducto = Convert.ToInt32(dgvProductos.CurrentRow.Cells[0].Value);
-                obj.lbDescripcionProducto.Text = dgvProductos.CurrentRow.Cells[3].Value.ToString();
+                obj.idProducto = Convert.ToInt32(0);
+                obj.lbDescripcionProducto.Text = "SELECCIONE UN PRODUCTO";
                 obj.ShowDialog();
-                listarProductos();
+                //listarProductos();
             }
             catch(Exception e)
             {
@@ -209,7 +215,7 @@ namespace herbalV2.Productos
         {
             listarClasificaciones();
             listarMarcas();
-            listarProductos();
+            //listarProductos();
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -305,6 +311,7 @@ namespace herbalV2.Productos
             if (dComun.permisosEmpleado.Contains("c"))
             {
                 abrirLotes();
+                
             }
             else
             {
@@ -315,28 +322,33 @@ namespace herbalV2.Productos
 
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
-            if (txtBuscar.Text == "")
+            if (txtBuscar.TextLength >= 3)
             {
-                listarProductos();
+                buscarProducto(txtBuscar.Text);
             }
             else
             {
-                dgvProductos.CurrentCell = null;
-                foreach (DataGridViewRow row in dgvProductos.Rows)
-                {
-                    row.Visible = false;
-                }
-                foreach (DataGridViewRow row in dgvProductos.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        if ((cell.Value.ToString().ToUpper()).IndexOf(txtBuscar.Text.ToUpper()) == 0)
-                        {
-                            row.Visible = true;
-                            break;
-                        }
-                    }
-                }
+                dgvProductos.DataSource = null;
+            }
+        }
+        private void buscarProducto(string texto)
+        {
+            try
+            {
+                var obj = new dProductos();
+                var productos = obj.listarProductos(texto);
+                dgvProductos.SuspendLayout();
+                dgvProductos.DataSource = productos;
+                dgvProductos.ResumeLayout();
+                dgvProductos.Columns["idProducto"].Visible = false;
+                dgvProductos.Columns["idClasificacion"].Visible = false;
+                dgvProductos.Columns["idMarca"].Visible = false;
+                dgvProductos.Columns["iva"].Visible = false;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error listarProductos(): " + e.Message);
             }
         }
     }

@@ -100,7 +100,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(405, 480);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(151, 39);
-            this.btnEliminar.TabIndex = 13;
+            this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "(supr) Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
@@ -193,11 +193,10 @@
             // 
             // lbDescripcionProducto
             // 
-            this.lbDescripcionProducto.AutoSize = true;
             this.lbDescripcionProducto.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDescripcionProducto.Location = new System.Drawing.Point(183, 63);
             this.lbDescripcionProducto.Name = "lbDescripcionProducto";
-            this.lbDescripcionProducto.Size = new System.Drawing.Size(16, 19);
+            this.lbDescripcionProducto.Size = new System.Drawing.Size(310, 61);
             this.lbDescripcionProducto.TabIndex = 146;
             this.lbDescripcionProducto.Text = "-";
             // 
@@ -217,7 +216,7 @@
             this.linkSeleccionarProducto.Location = new System.Drawing.Point(311, 20);
             this.linkSeleccionarProducto.Name = "linkSeleccionarProducto";
             this.linkSeleccionarProducto.Size = new System.Drawing.Size(150, 13);
-            this.linkSeleccionarProducto.TabIndex = 144;
+            this.linkSeleccionarProducto.TabIndex = 8;
             this.linkSeleccionarProducto.TabStop = true;
             this.linkSeleccionarProducto.Text = "(F1) Seleccionar otro producto";
             this.linkSeleccionarProducto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkSeleccionarProducto_LinkClicked);
@@ -226,25 +225,25 @@
             // 
             this.dtCaducidad.CalendarFont = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtCaducidad.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtCaducidad.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtCaducidad.Location = new System.Drawing.Point(137, 176);
+            this.dtCaducidad.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtCaducidad.Location = new System.Drawing.Point(141, 205);
             this.dtCaducidad.Name = "dtCaducidad";
             this.dtCaducidad.Size = new System.Drawing.Size(165, 27);
-            this.dtCaducidad.TabIndex = 142;
+            this.dtCaducidad.TabIndex = 3;
             // 
             // txtStock
             // 
             this.txtStock.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtStock.Location = new System.Drawing.Point(137, 139);
+            this.txtStock.Location = new System.Drawing.Point(141, 168);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(96, 27);
-            this.txtStock.TabIndex = 3;
+            this.txtStock.TabIndex = 2;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(74, 142);
+            this.label8.Location = new System.Drawing.Point(78, 171);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 21);
             this.label8.TabIndex = 141;
@@ -259,10 +258,10 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(279, 228);
+            this.btnCancelar.Location = new System.Drawing.Point(283, 257);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(145, 39);
-            this.btnCancelar.TabIndex = 12;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -276,10 +275,10 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(52, 228);
+            this.btnGuardar.Location = new System.Drawing.Point(56, 257);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(197, 39);
-            this.btnGuardar.TabIndex = 11;
+            this.btnGuardar.TabIndex = 4;
             this.btnGuardar.Text = "(Enter) Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -288,7 +287,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 181);
+            this.label4.Location = new System.Drawing.Point(30, 210);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(105, 21);
             this.label4.TabIndex = 9;
@@ -298,7 +297,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(83, 98);
+            this.label3.Location = new System.Drawing.Point(87, 127);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 21);
             this.label3.TabIndex = 7;
@@ -307,7 +306,7 @@
             // txtLote
             // 
             this.txtLote.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLote.Location = new System.Drawing.Point(137, 98);
+            this.txtLote.Location = new System.Drawing.Point(141, 127);
             this.txtLote.Name = "txtLote";
             this.txtLote.Size = new System.Drawing.Size(271, 27);
             this.txtLote.TabIndex = 1;
