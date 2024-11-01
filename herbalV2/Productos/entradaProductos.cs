@@ -17,6 +17,7 @@ namespace herbalV2.Productos
         public entradaProductos()
         {
             InitializeComponent();
+            dtCaducidad.Value = DateTime.Today;
         }
         private void listarLotes()
         {
@@ -104,9 +105,9 @@ namespace herbalV2.Productos
         private void entradaProductos_Load(object sender, EventArgs e)
         {
             listarLotes();
-            dtCaducidad.Format = DateTimePickerFormat.Custom;
-            dtCaducidad.CustomFormat = "MMMM yyyy"; // Mostrar mes y año
-            dtCaducidad.ShowUpDown = true; // Para mostrar el control como un selector de mes/año
+            //dtCaducidad.Format = DateTimePickerFormat.Custom;
+            //dtCaducidad.CustomFormat = "MMMM, yyyy"; // Mostrar mes y año
+            //dtCaducidad.ShowUpDown = true; // Para mostrar el control como un selector de mes/año
 
         }
 
@@ -156,6 +157,20 @@ namespace herbalV2.Productos
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             eliminarLote();
+        }
+
+        private void dtCaducidad_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionada = dtCaducidad.Value;
+            dtCaducidad.Value = new DateTime(fechaSeleccionada.Year, fechaSeleccionada.Month, 1);
+        }
+
+        private void dtCaducidad_CloseUp(object sender, EventArgs e)
+        {
+            DateTime fechaSeleccionada = dtCaducidad.Value;
+
+            // Configurar al primer día del mes seleccionado
+            dtCaducidad.Value = new DateTime(fechaSeleccionada.Year, fechaSeleccionada.Month, 1);
         }
     }
 }
