@@ -176,17 +176,14 @@ namespace herbalV2.Productos
         {
             try
             {
-                decimal precioCosto = Convert.ToDecimal(txtPCosto.Text);
+                decimal precioMayoreo = Convert.ToDecimal(txtPMayoreo.Text);
                 // Calcular los demás precios
-                decimal precioLab = precioCosto / 0.85m;
-                decimal precioDistribuidor = precioLab / 0.82m;
-                decimal precioMayoreo = precioDistribuidor / 0.80m;
+                decimal precioLab = precioMayoreo * .70m;
+                decimal precioDistribuidor = precioMayoreo * 0.80m;
                 decimal precioLista = precioMayoreo / 0.60m;
 
-                txtPCosto.Text = Math.Round(precioCosto, 2).ToString();
                 txtPLab.Text = Math.Round(precioLab, 2).ToString();
                 txtPrecioDistribuidor.Text = Math.Round(precioDistribuidor, 2).ToString();
-                txtPMayoreo.Text = Math.Round(precioMayoreo, 2).ToString();
                 txtPLista.Text = Math.Round(precioLista, 2).ToString();
             }
             catch (Exception e)
@@ -252,7 +249,7 @@ namespace herbalV2.Productos
             }
             else if (keyData == Keys.Enter)
             {
-                if (txtPCosto.Focused)
+                if (txtPMayoreo.Focused)
                 {
                     calcularPrecios();
 
