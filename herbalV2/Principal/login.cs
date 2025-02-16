@@ -46,7 +46,8 @@ namespace herbalV2.Principal
                     var obj = new dUsuarios();
                     int idEmpleado = 0, identificador=0;
                     string nombre = string.Empty, permisos = string.Empty;
-                    if (obj.login(txtEmpleado.Text, txtPass.Text, out idEmpleado, out nombre, out permisos, out identificador))
+                    string error = "";
+                    if (obj.login(txtEmpleado.Text, txtPass.Text, out idEmpleado, out nombre, out permisos, out identificador, out error))
                     {
                         if (identificador == 1)
                         {
@@ -61,7 +62,7 @@ namespace herbalV2.Principal
                         }
                         else
                         {
-                            MessageBox.Show("Ocurrio un error de lógica");
+                            MessageBox.Show("Ocurrio un error de lógica: " + error);
                         }
                     }
                     else
@@ -75,7 +76,7 @@ namespace herbalV2.Principal
                         }
                         else if (identificador == 2)
                         {
-                            MessageBox.Show("Ocurrio un error con la conexión a la base de datos");
+                            MessageBox.Show("Ocurrio un error con la conexión a la base de datos: " + error);
                         }
                     }
                 }

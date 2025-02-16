@@ -10,8 +10,9 @@ namespace Datos
 {
     public class dUsuarios : conexion
     {
-        public bool login(string usuario, string pass, out int idEmpleado, out string nombre, out string permisos, out int identificador)
+        public bool login(string usuario, string pass, out int idEmpleado, out string nombre, out string permisos, out int identificador, out string error)
         {
+            error = "";
             idEmpleado = 0;
             nombre = string.Empty;
             permisos = string.Empty;
@@ -50,10 +51,11 @@ namespace Datos
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 resul = false;
                 identificador = 2;
+                error = e.Message;
             }
 
             //identificador 0=usuario o contraseña incorrectos, 1=encontrado, 2=error

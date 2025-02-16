@@ -266,7 +266,7 @@ namespace Datos
                 using (var command = new SqlCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = "select amecop, codigo, descripcion, stock from productos where activo=1;";
+                    command.CommandText = "select codigo as CODIGO,amecop AS AMECOP,pa.descripcion AS DESCRIPCION,stock AS STOCK,precioCosto AS 'P.COSTO',stock*precioCosto as IMPORTE,pa.idClasificacion, case when c.isSuplemento=1 then 'SUPLEMENTO' else 'COSMETICO' end as CLAS1,clasificacion AS CLAS2,idMarca,marca AS MARCA from productosActivos pa left join clasificaciones c on pa.idClasificacion=c.idClasificacion";
                     command.CommandType = CommandType.Text;
                     SqlDataReader reader = command.ExecuteReader();
                     DataTable tabla = new DataTable();

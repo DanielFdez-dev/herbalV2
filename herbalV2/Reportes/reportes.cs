@@ -78,5 +78,18 @@ namespace herbalV2.Reportes
                 MessageBox.Show("Solo el administrador puede ingresar a este reporte");
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (dComun.permisosEmpleado.Contains("q"))
+            {
+                var frm = new reporteProductos();
+                frm.Show();
+            }
+            else
+            {
+                MessageBox.Show("No cuenta con permisos para acceder a reporte de cobranza");
+            }
+        }
     }
 }

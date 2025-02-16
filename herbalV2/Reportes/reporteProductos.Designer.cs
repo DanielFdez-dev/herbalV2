@@ -117,6 +117,7 @@
             this.btnProcesar.TabIndex = 50;
             this.btnProcesar.Text = "Procesar";
             this.btnProcesar.UseVisualStyleBackColor = false;
+            this.btnProcesar.Click += new System.EventHandler(this.btnProcesar_Click);
             // 
             // groupBox1
             // 
@@ -170,6 +171,7 @@
             this.label2.TabIndex = 47;
             this.label2.Text = "Fecha:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label2.Visible = false;
             // 
             // fecha2
             // 
@@ -246,16 +248,12 @@
             this.cbTipoReporte.FormattingEnabled = true;
             this.cbTipoReporte.ItemHeight = 20;
             this.cbTipoReporte.Items.AddRange(new object[] {
-            "NOTAS POR COBRAR",
-            "ADEUDOS GLOBALES POR CLIENTE",
-            "MOVIMIENTOS POR CLIENTES ESPECIFICO",
-            "ADEUDOS GLOBALES POR VENDEDOR",
-            "ADEUDOS POR VENDEDOR ESPECIFICO",
-            "ABONOS RECIBIDOS EN UN PERIODO"});
+            "EXISTENCIA GENERAL"});
             this.cbTipoReporte.Location = new System.Drawing.Point(126, 7);
             this.cbTipoReporte.Name = "cbTipoReporte";
             this.cbTipoReporte.Size = new System.Drawing.Size(307, 28);
             this.cbTipoReporte.TabIndex = 39;
+            this.cbTipoReporte.SelectedIndexChanged += new System.EventHandler(this.cbTipoReporte_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -287,6 +285,7 @@
             this.Controls.Add(this.label1);
             this.Name = "reporteProductos";
             this.Text = "reporteProductos";
+            this.Load += new System.EventHandler(this.reporteProductos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReporte)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

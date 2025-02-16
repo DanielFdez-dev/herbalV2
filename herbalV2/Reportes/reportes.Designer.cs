@@ -34,6 +34,7 @@
             this.btnReimpresionNotaVenta = new System.Windows.Forms.Button();
             this.btnUtilidadBruta = new System.Windows.Forms.Button();
             this.btnUtilidadXFecha = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnReporteVentas
@@ -116,12 +117,29 @@
             this.btnUtilidadXFecha.UseVisualStyleBackColor = true;
             this.btnUtilidadXFecha.Click += new System.EventHandler(this.btnUtilidadXFecha_Click);
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(66, 333);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(169, 165);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Inventario";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // reportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1178, 682);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnUtilidadXFecha);
             this.Controls.Add(this.btnUtilidadBruta);
             this.Controls.Add(this.btnReimpresionNotaVenta);
@@ -140,5 +158,6 @@
         private System.Windows.Forms.Button btnReimpresionNotaVenta;
         private System.Windows.Forms.Button btnUtilidadBruta;
         private System.Windows.Forms.Button btnUtilidadXFecha;
+        private System.Windows.Forms.Button button1;
     }
 }
